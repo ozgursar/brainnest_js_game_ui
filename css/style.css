@@ -1,0 +1,99 @@
+:root {
+  --rock-color: #F3684F;
+  --paper-color: #5EBEBB;
+  --scissors-color: #F7BF3D;
+  --button-text-color: #fff;
+  --reset-color: blue;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  margin-top: 30px;
+}
+
+header h1 {
+  margin: 10px 0;
+}
+
+
+.selection {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+#rock {
+  background-color: var(--rock-color);
+}
+
+#paper {
+  background-color: var(--paper-color);
+}
+
+#scissors {
+  background-color: var(--scissors-color);
+}
+
+#reset-btn {
+  background-color: var(--reset-color);
+}
+
+.btn {
+  color: var(--button-text-color);
+  padding: 10px;
+  min-width: 120px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover{
+  filter:brightness(90%);
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #666;
+  background-color: #c0c0c0!important;
+}
+
+.scoreboard div{
+  white-space: pre-wrap;
+  padding: 20px;
+  min-width: 70vw;
+  max-width: 90vw;
+  min-height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  font-size: 16px;
+  background: #444;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.playagain {
+  margin: 20px 0;
+  visibility: hidden;
+}
+
+.playagain-visible {
+  visibility: visible;
+}
+
+footer {
+  border-top: 1px solid #999;
+  padding: 5px 50px;
+  color: #999;
+}
