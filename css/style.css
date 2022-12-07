@@ -68,7 +68,7 @@ header h1 {
 .btn-disabled {
   cursor: not-allowed;
   pointer-events: none;
-  color: var(--disabled-disabled-button-text);
+  color: var(--disabled-button-text-color);
   background-color: var(--disabled-button-color)!important;
 }
 
