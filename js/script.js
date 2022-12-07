@@ -17,13 +17,12 @@ resetButton.addEventListener('click', () => {
   round = 0
   scorePlayer = 0
   scoreComputer = 0
-  buttons.forEach((button) => {
-    button.disabled = false
-    button.classList.toggle("btn-disabled")
-  })
+  toggleButtons(false)
   resetSection.classList.toggle("playagain-visible")
   scoreBoard.textContent='Ready to start...'
 })
+const playerIcon=document.querySelector("#player-icon")
+const computerIcon=document.querySelector("#computer-icon")
 
 function computerPlay() {
   let computerMove
@@ -41,10 +40,33 @@ function computerPlay() {
   return computerMove
 }
 
+function toggleButtons(buttonDisabled) {
+  buttons.forEach((button) => {
+    button.disabled = buttonDisabled
+    button.classList.toggle("btn-disabled")
+  })
+}
 
 function playRound(playerSelection, computerSelection) {
   round++
   let roundResult
+  let finalResult
+
+  //Animate icons and hide
+  playerIcon.src=`./images/${playerSelection}.png`
+  playerIcon.classList.add("move-left")
+  computerIcon.src=`./images/${computerSelection}.png`
+  computerIcon.classList.toggle("move-right")
+  // Disable buttons until animation ends
+  toggleButtons(true)
+  setTimeout(() => {
+    playerIcon.src='./images/blank.png'
+    playerIcon.classList.toggle("move-left")
+    computerIcon.src='./images/blank.png'
+    computerIcon.classList.toggle("move-right")
+    toggleButtons(false)
+  }, 2000)
+
   if (playerSelection == computerSelection) {
     roundResult = `Draw!\n\nPlayer and computer both selected ${playerSelection}.`
   } else if (playerSelection == 'rock' && computerSelection == 'paper') {
@@ -66,15 +88,19 @@ function playRound(playerSelection, computerSelection) {
     roundResult = `You lose!\n\n Computer selected ${computerSelection}. Rock crushes scissors.`
     scoreComputer++
   }
-  
   scoreBoard.textContent= `ROUND #${round}\n\n${roundResult}\n\nPlayer ${scorePlayer} - ${scoreComputer} Computer`
 
-  // Disable all buttons and enable reset link if max score is reached
+  // Announce winner
   if (scorePlayer==maxScore || scoreComputer==maxScore) {
-    buttons.forEach((button) => {
-      button.disabled = true
-      button.classList.toggle("btn-disabled")
-    })
-    resetSection.classList.toggle("playagain-visible")
+    if (scorePlayer>scoreComputer) {
+      finalResult = `Player Wins ${scorePlayer} to ${scoreComputer}`
+    } else {
+      finalResult = `Computer Wins ${scoreComputer} to ${scorePlayer}`
+    }
+    setTimeout(() => {
+      scoreBoard.textContent = finalResult
+      toggleButtons(true)
+      resetSection.classList.toggle("playagain-visible")
+    }, 2000)    
   }
 }

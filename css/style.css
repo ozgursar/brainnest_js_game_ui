@@ -4,6 +4,11 @@
   --scissors-color: #F7BF3D;
   --button-text-color: #fff;
   --reset-color: blue;
+  --disabled-button-text-color: #666;
+  --disabled-button-color: #c0c0c0;
+  --scoreboard-background: #444;
+  --scoreboard-text-color: #fff;
+  --footer-text-color: #999;  
 }
 
 body {
@@ -63,23 +68,27 @@ header h1 {
 .btn-disabled {
   cursor: not-allowed;
   pointer-events: none;
-  color: #666;
-  background-color: #c0c0c0!important;
+  color: var(--disabled-disabled-button-text);
+  background-color: var(--disabled-button-color)!important;
 }
 
-.scoreboard div{
+.scoreboard {
+  position: relative;
+  overflow: hidden;
+}
+
+.scoreboard div:first-child{
   white-space: pre-wrap;
-  padding: 20px;
-  min-width: 70vw;
-  max-width: 90vw;
+  padding: 20px 5px;
+  width: 440px;
   min-height: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: monospace;
-  font-size: 16px;
-  background: #444;
-  color: #fff;
+  font-size: 14px;
+  background-color: var(--scoreboard-background);
+  color: var(--scoreboard-text-color);
   border-radius: 10px;
 }
 
@@ -92,8 +101,52 @@ header h1 {
   visibility: visible;
 }
 
+.animation-area {
+  position: absolute;
+  top: 30px;
+  z-index:1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+#player-icon {
+  margin-left: -60px;
+}
+
+#computer-icon {
+  margin-right: -60px;
+}
+
+.move-left {
+  position:relative;
+  -webkit-animation: backandforth-left 2s ease 0s;
+  -webkit-animation-iteration-count:1;
+  animation: backandforth-left 2s ease 0s;
+  animation-iteration-count:1;
+}
+
+.move-right {
+  position:relative;
+  -webkit-animation: backandforth-right 2s ease 0s;
+  -webkit-animation-iteration-count:1;
+  animation: backandforth-right 2s ease 0s;
+  animation-iteration-count:1;
+}
+
+@-webkit-keyframes backandforth-left {0%{left:0;} 50%{left:15%;} 100%{left:0;}}
+@keyframes backandforth-left {0%{left:0;} 50%{left:30%;} 100%{left:0;}}
+@-webkit-keyframes backandforth-right {0%{right:0;} 50%{right:15%;} 100%{right:0;}}
+@keyframes backandforth-right {0%{right:0;} 50%{right:30%;} 100%{right:0;}}
+
 footer {
-  border-top: 1px solid #999;
-  padding: 5px 50px;
-  color: #999;
+  border-top: 1px solid var(--footer-text-color);
+  padding: 5px;
+  color: var(--footer-text-color);
 }

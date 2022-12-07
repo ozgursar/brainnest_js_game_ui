@@ -10,9 +10,9 @@
 </head>
 <body>
   <header>
-    <img src="./images/gamelogo.jpg" alt="Rock, Paper, Scissors Game Logo">
+    <a href="index.html"><img src="./images/gamelogo.jpg" alt="Rock, Paper, Scissors Game Logo"></a>
     <h1>Rock, Paper, Scissors</h1>
-    <p>Welcome to the Rock, Paper, Scissors Game. First to reach five wins!</p>
+    <p>Welcome to the Rock, Paper, Scissors Game. First to reach 5 wins!</p>
   </header>
   <main>
     <section class="selection">
@@ -21,7 +21,11 @@
       <button id="scissors" class="btn">Scissors</button>
     </section>
     <section class="scoreboard">
-      <div>Start the game by clicking Rock, Paper or Scissors.</div>
+      <div>Start the game by clicking one of the buttons!</div>
+      <div class="animation-area">
+        <img src="./images/blank.png" id="player-icon" class="icon" alt="Player icon">
+        <img src="./images/blank.png" id="computer-icon" class="icon" alt="Computer icon">
+      </div>  
     </section>
     <section class="playagain">
       <p>Would you like to play again?</p>
@@ -29,7 +33,7 @@
     </section>
   </main>
   <footer>
-    <small>Made by Ozgur, enjoy the game!</small>
+    <small>Made by Ozgur, enjoy the game!  — <em>Click logo to restart at any time</em></small>
   </footer>
 </body>
 </html>
