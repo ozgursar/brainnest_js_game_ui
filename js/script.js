@@ -70,25 +70,30 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     roundResult = `Draw!\n\nPlayer and computer both selected ${playerSelection}.`
   } else if (playerSelection == 'rock' && computerSelection == 'paper') {
-    roundResult = `You lose!\n\n Computer selected ${computerSelection}. Paper covers rock.`
+    roundResult = `You lose!\n\n Paper covers rock.`
     scoreComputer++
   } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-    roundResult = `You win!\n\n Computer selected ${computerSelection}. Rock crushes scissors.`
+    roundResult = `You win!\n\n Rock crushes scissors.`
     scorePlayer++
   } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-    roundResult = `You win!\n\n Computer selected ${computerSelection}. Paper covers rock.`
+    roundResult = `You win!\n\n Paper covers rock.`
     scorePlayer++
   } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-    roundResult = `You lose!\n\n Computer selected ${computerSelection}. Scissors cut paper.`
+    roundResult = `You lose!\n\n Scissors cut paper.`
     scoreComputer++
   } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-    roundResult = `You win!\n\n Computer selected ${computerSelection}. Scissors cut paper.`
+    roundResult = `You win!\n\n Scissors cut paper.`
     scorePlayer++
   } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-    roundResult = `You lose!\n\n Computer selected ${computerSelection}. Rock crushes scissors.`
+    roundResult = `You lose!\n\n Rock crushes scissors.`
     scoreComputer++
   }
-  scoreBoard.textContent= `ROUND #${round}\n\n${roundResult}\n\nPlayer ${scorePlayer} - ${scoreComputer} Computer`
+
+  // Display round score after the animation
+  scoreBoard.textContent= `${playerSelection.toUpperCase()} - ${computerSelection.toUpperCase()}`
+  setTimeout(() => {
+    scoreBoard.textContent= `ROUND #${round}\n\n${roundResult}\n\nPlayer ${scorePlayer} - ${scoreComputer} Computer`
+  }, 2000)
 
   // Announce winner
   if (scorePlayer==maxScore || scoreComputer==maxScore) {

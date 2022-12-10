@@ -103,7 +103,7 @@ header h1 {
 
 .animation-area {
   position: absolute;
-  top: 30px;
+  top: 60px;
   z-index:1;
   width: 100%;
   display: flex;
@@ -112,8 +112,8 @@ header h1 {
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 #player-icon {
